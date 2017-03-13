@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>images/tools/arrow.png</file>
+        <file>images/tools/brush.png</file>
+        <file>images/tools/erase.png</file>
+        <file>images/tools/point.png</file>
+        <file>images/tools/text.png</file>
+        <file>images/font/bold.png</file>
+        <file>images/font/italic.png</file>
+        <file>images/font/underline.png</file>
+        <file>images/file/clear.png</file>
+        <file>images/file/close.png</file>
+        <file>images/file/flipH.png</file>
+        <file>images/file/flipV.png</file>
+        <file>images/file/load.png</file>
+        <file>images/file/new.png</file>
+        <file>images/file/rotateL.png</file>
+        <file>images/file/rotateR.png</file>
+        <file>images/file/zoom_in.png</file>
+        <file>images/file/zoom_out.png</file>
+        <file>images/icon32.png</file>
+        <file>images/icon64.png</file>
+        <file>images/icon80.png</file>
+        <file>images/icon256.png</file>
+        <file>images/file/open.png</file>
+        <file>images/file/save.png</file>
+        <file>images/file/saveas.png</file>
+        <file>images/font/ok.png</file>
+    </qresource>
+</RCC>
