@@ -4,9 +4,10 @@
 
 /*
 !/.gitignore
-!/.README.md
-!/.test.png
-!/.GridArrayQt.sln
+!/LICENSE
+!/README.md
+!/test.png
+!/GridArrayQt.sln
 
 !/GridArrayQt
 /GridArrayQt/*
