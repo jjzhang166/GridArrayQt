@@ -1,32 +1,11 @@
 #include "GridArrayQt.h"
+#include "ui_GridArrayQt.h"
 
-/*
-//»Øµ÷º¯Êı,º¯ÊıÖ¸Õë (*f)()
-void setFun(bool (*f)(QString &),int a)				//(*f)¸ø²»Í¬º¯ÊıÖ¸Õë£¬¿ÉÒÔÊµÏÖ²»Í¬¹¦ÄÜ
-{
-	QString str = QString("the value: %1").arg(a);
-	if((*f)(str))
-	{
-		qDebug()<<"true";
-	}
-	else
-	{
-		qDebug()<<"false";
-	}
-}
-
-bool reFun(QString &str)
-{
-	qDebug()<<str;
-	return true;
-}
-*/
 
 GridArrayQt::GridArrayQt(QWidget *parent)
-	: QMainWindow(parent)
+    : QMainWindow(parent), ui(new Ui::GridArrayQt)
 {
-	_ui.setupUi(this);
-	ui = &_ui; 
+    ui->setupUi(this);
 
 	//int t1,t2;
 	//QPoint p1(0,7),p2(0,4);
@@ -53,7 +32,7 @@ void GridArrayQt::createDrawArea()
 	pDrawArea = new QDrawArea(nGridW,nGridH,this);
 	pDrawArea->setAutoFillBackground(true);
 	pDrawArea->setBackgroundRole(QPalette::Dark);
-	setCentralWidget(pDrawArea);			//½«DrawArea×÷ÎªÏÔÊ¾Çø£¬DrawArea¼Ì³ĞÓÚQWidget
+	setCentralWidget(pDrawArea);			//å°†DrawAreaä½œä¸ºæ˜¾ç¤ºåŒºï¼ŒDrawAreaç»§æ‰¿äºQWidget
 	
 	//Cursor
 	QCursor qCursor;
@@ -75,7 +54,7 @@ void GridArrayQt::createDrawArea()
 		qCursor = QCursor(Qt::IBeamCursor);
 		break;
 	}
-	pDrawArea->setPointCursor(qPointCursor,qCursor);	//³õÊ¼»¯qPointCursorµÈÊı¾İ
+	pDrawArea->setPointCursor(qPointCursor,qCursor);	//åˆå§‹åŒ–qPointCursorç­‰æ•°æ®
 	pDrawArea->setCursorR(nCursorR);
 	createFont();
 
@@ -151,7 +130,7 @@ void GridArrayQt::setupMenu()
 	qMenu_Edit->addAction(qEdit_RotateRight);
 	qMenu_Edit->addAction(qEdit_FlipH);
 	qMenu_Edit->addAction(qEdit_FlipV);
-		//×¢Òâ£ºpDrawArea,&QDrawArea::drawClear),ÕâÑùÁ¬½ÓÊ±£¬ĞÂ½¨pDrawArea¾Í»áÊ§È¥ÁªÏµ
+		//æ³¨æ„ï¼špDrawArea,&QDrawArea::drawClear),è¿™æ ·è¿æ¥æ—¶ï¼Œæ–°å»ºpDrawAreaå°±ä¼šå¤±å»è”ç³»
 	connect(qEdit_Clear,&QAction::triggered,[=]{pDrawArea->clearGrid();pDrawArea->drawGrid();});
 	connect(qEdit_ZoomIn,&QAction::triggered,[=]{pDrawArea->zoomInGrid();});
 	connect(qEdit_ZoomOut,&QAction::triggered,[=]{pDrawArea->zoomOutGrid();});
@@ -325,7 +304,7 @@ void GridArrayQt::setupDockwidget()
 			setIMG_GRID();
 			ui->radio_Blue->setChecked(true);
 	});
-	connect(ui->radio_Gray,&QRadioButton::toggled,				//toggled:ÇĞ»»ĞÅºÅ
+	connect(ui->radio_Gray,&QRadioButton::toggled,				//toggled:åˆ‡æ¢ä¿¡å·
 		[=](bool checked){
 			if(checked)
 			{
@@ -484,7 +463,7 @@ void GridArrayQt::createFont()
 }
 
 
-// ³õÊ¼»¯ÉèÖÃ
+// åˆå§‹åŒ–è®¾ç½®
 void GridArrayQt::SetInit()
 {
 	this->setFocusPolicy(Qt::StrongFocus);	//receive keyboard event.
@@ -694,7 +673,7 @@ void GridArrayQt::writeGaqFile(QFile *file)
 	file->write((char*)&imgLen,4);			//The end of gaq file is image size, 
 											//convenient for skip the image data when read gaq file.
 	file->close();
-	//delete gp;	//²»ÄÜÊÍ·ÅÄÚ´æ£¬·ñÔò»áÓëpDrawAreaµÄpbGridAllPoint¸øÊÍ·ÅÁË
+	//delete gp;	//ä¸èƒ½é‡Šæ”¾å†…å­˜ï¼Œå¦åˆ™ä¼šä¸pDrawAreaçš„pbGridAllPointç»™é‡Šæ”¾äº†
 }
 
 void GridArrayQt::openFile(byte type = FILE_FALSE)
@@ -811,7 +790,7 @@ bool GridArrayQt::loadFile(byte type, const QString &str)
 
 //*************************************************************************************//
 
-// ¼üÅÌÊÂ¼ş
+// é”®ç›˜äº‹ä»¶
 void GridArrayQt::keyPressEvent(QKeyEvent *e)
 {
 	int key = e->key();
@@ -906,6 +885,7 @@ void GridArrayQt::closeEvent(QCloseEvent *e)
 
 //class GCombox
 GCombox::GCombox(QWidget *parent)
+    :QComboBox(parent)
 {
 	this->setEditable(true);
 }

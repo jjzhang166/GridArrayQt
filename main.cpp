@@ -2,7 +2,7 @@
  * GridArrayQt
  * Author: YeHuoHangXing
  * Description: This is for creating picture array of OLED screen.
- * Qt version: Qt5.5.1 + vs2012
+ * Qt version: Qt5.7.0
  * 
  */
 

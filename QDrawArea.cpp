@@ -13,7 +13,7 @@ QDrawArea::QDrawArea(QWidget *parent)
 	drawGrid();
 }
 
-QDrawArea::QDrawArea(int gw,int gh,QWidget *parent)		//Ä¬ÈÏ²ÎÖ»ÄÜÔÚÉùÃ÷»ò¶¨Òå´¦Ğ´£¬²»ÄÜÁ½´¦Í¬Ê±Ğ´
+QDrawArea::QDrawArea(int gw,int gh,QWidget *parent)		//é»˜è®¤å‚åªèƒ½åœ¨å£°æ˜æˆ–å®šä¹‰å¤„å†™ï¼Œä¸èƒ½ä¸¤å¤„åŒæ—¶å†™
 	:nGridW(gw),nGridH(gh),QWidget(parent)
 {
 	pbGridAllPoint = new bool[nGridW*nGridH];
@@ -128,7 +128,7 @@ void QDrawArea::unloadPicture()
 void QDrawArea::convertPicture(QImage *image,int type, byte value)
 {
 	int i,j;
-	int picw,pich;					//Í¼Ïñ¿í¸ß
+	int picw,pich;					//å›¾åƒå®½é«˜
 	byte tmp;
 	QRgb qClr;
 	picw = image->width();
@@ -299,16 +299,16 @@ void QDrawArea::exportArray()
 	{
 		int i,j,k = 0;
 #if(1)
-		//ÓÃÊı×é±íÊ¾ËùÓĞµãµÄ×´Ì¬
+		//ç”¨æ•°ç»„è¡¨ç¤ºæ‰€æœ‰ç‚¹çš„çŠ¶æ€
 		//Get array
 		unsigned char tmp;
 		int y,yy;
-		int gx = nGridW / 8;								//È·¶¨ÁĞĞèÒª¶àÉÙ¸ö×Ö½Ú
+		int gx = nGridW / 8;								//ç¡®å®šåˆ—éœ€è¦å¤šå°‘ä¸ªå­—èŠ‚
 		if(nGridW%8)
 		{
 			gx ++;
 		}
-		int gy = nGridH;									//ÁĞÓÃ×Ö½Ú±íÊ¾£¬¹ÊĞĞÊı²»±ä
+		int gy = nGridH;									//åˆ—ç”¨å­—èŠ‚è¡¨ç¤ºï¼Œæ•…è¡Œæ•°ä¸å˜
 		unsigned char *pGridAr = new unsigned char[gx*gy];
 		memset(pGridAr,0,gx*gy);
 		for(int i = 0; i <  nGridH; i ++)
@@ -317,10 +317,10 @@ void QDrawArea::exportArray()
 			{
 				if(*(pbGridAllPoint + i*nGridW + j))
 				{
-					y = j / 8;									//È·¶¨ÁĞµÄµÚ¼¸¸ö×Ö½Ú
-					yy = j % 8;									//È·¶¨×Ö½ÚµÄµÚ¼¸Î»
+					y = j / 8;									//ç¡®å®šåˆ—çš„ç¬¬å‡ ä¸ªå­—èŠ‚
+					yy = j % 8;									//ç¡®å®šå­—èŠ‚çš„ç¬¬å‡ ä½
 					tmp = *(pGridAr + i*gx + y);
-					SetBit(tmp, yy);							//´Ó×óÏòÓÒ±éÀú£¬×ó±ßµÄÏñËØµã·ÅÔÚ×Ö½ÚµÄµÍÎ»
+					SetBit(tmp, yy);							//ä»å·¦å‘å³éå†ï¼Œå·¦è¾¹çš„åƒç´ ç‚¹æ”¾åœ¨å­—èŠ‚çš„ä½ä½
 					*(pGridAr + i*gx + y) = tmp;
 				}
 			}
@@ -333,7 +333,7 @@ void QDrawArea::exportArray()
 			QTextStream fin;
 			fin.setDevice(&file);
 
-			fin<<QString("const unsigned char Array[%1][%2] = {\n").arg((int)gy).arg((int)gx);	//gyÎªĞĞÊı£¬gxÎªÁĞÊı
+			fin<<QString("const unsigned char Array[%1][%2] = {\n").arg((int)gy).arg((int)gx);	//gyä¸ºè¡Œæ•°ï¼Œgxä¸ºåˆ—æ•°
 			for(i = 0; i < gy; i ++)
 			{
 				for(j = 0; j < gx; j++)
@@ -354,9 +354,9 @@ void QDrawArea::exportArray()
 #else
 
 		int num = 0;
-		for(i = 0; i < nGridH; i ++)			//ĞĞ
+		for(i = 0; i < nGridH; i ++)			//è¡Œ
 		{
-			for(j = 0; j < nGridW; j ++)		//ÁĞ
+			for(j = 0; j < nGridW; j ++)		//åˆ—
 			{
 				if(*(pbGridAllPoint + i*nGridW + j))
 				{
@@ -372,7 +372,7 @@ void QDrawArea::exportArray()
 			return;
 		}
 
-		//ÓÃÁ½¸öÊı×é·Ö±ğ±íÊ¾±ê¼ÇµÄµãĞĞÁĞ×ø±ê
+		//ç”¨ä¸¤ä¸ªæ•°ç»„åˆ†åˆ«è¡¨ç¤ºæ ‡è®°çš„ç‚¹è¡Œåˆ—åæ ‡
 		//Get array
 		int *GridX = new int[num];
 		int *GridY = new int[num];
@@ -502,7 +502,7 @@ void QDrawArea::loadArray(QFile *file)
 			k = j / 8;
 			tmp = *(gp + i * gx + k);
 			k = j % 8;
-			if(BitIsHigh(tmp,k))		//´Ó×óÏòÓÒ±éÀú£¬×ó±ßµÄÏñËØµã·ÅÔÚ×Ö½ÚµÄµÍÎ»
+			if(BitIsHigh(tmp,k))		//ä»å·¦å‘å³éå†ï¼Œå·¦è¾¹çš„åƒç´ ç‚¹æ”¾åœ¨å­—èŠ‚çš„ä½ä½
 			{
 				*(pbGridAllPoint + i * nGridW + j) = true;
 			}
@@ -622,8 +622,8 @@ void QDrawArea::calcGrid(QPoint p1,QPoint p2)
 				&& px < nGridX0 + nGridW*nGridSize
 				&& py < nGridY0 + nGridH*nGridSize)
 			{
-				int i = (py - nGridY0) / nGridSize;		//ĞĞÊı
-				int j = (px - nGridX0) / nGridSize;		//ÁĞÊı
+				int i = (py - nGridY0) / nGridSize;		//è¡Œæ•°
+				int j = (px - nGridX0) / nGridSize;		//åˆ—æ•°
 				*(pbGridAllPoint + i * nGridW + j) = true;
 			}
 
@@ -645,7 +645,7 @@ void QDrawArea::calcGrid(QPoint p1,QPoint p2)
 
 		while (1)
 		{
-			//¼ÆËã°üº¬ÓÚÔ²È¦ÄÚÓĞÏñËØµã
+			//è®¡ç®—åŒ…å«äºåœ†åœˆå†…æœ‰åƒç´ ç‚¹
 			int i,j,ii,jj;
 			for(i = px-nCursorR; i <= px+nCursorR; i += nGridSize)
 			{
@@ -657,8 +657,8 @@ void QDrawArea::calcGrid(QPoint p1,QPoint p2)
 					{
 						continue;
 					}
-					ii = (j-nGridY0) / nGridSize;			//ĞĞÊı
-					jj = (i-nGridX0) / nGridSize;			//ÁĞÊı
+					ii = (j-nGridY0) / nGridSize;			//è¡Œæ•°
+					jj = (i-nGridX0) / nGridSize;			//åˆ—æ•°
 					if(qPointCursor == Brush)
 					{
 						*(pbGridAllPoint + ii * nGridW + jj) = true;
@@ -687,14 +687,14 @@ void QDrawArea::calcGrid(QPoint p1,QPoint p2)
 	//		&& px < nGridX0 + nGridW*nGridSize
 	//		&& py < nGridY0 + nGridH*nGridSize)
 	//	{
-	//		int i = (py - nGridY0) / nGridSize;		//ĞĞÊı
-	//		int j = (px - nGridX0) / nGridSize;		//ÁĞÊı
+	//		int i = (py - nGridY0) / nGridSize;		//è¡Œæ•°
+	//		int j = (px - nGridX0) / nGridSize;		//åˆ—æ•°
 	//		*(pbGridAllPoint + i * nGridW + j) = true;
 	//	}
 	//}
 	//else
 	//{
-	//	//¼ÆËã°üº¬ÓÚÔ²È¦ÄÚÓĞÏñËØµã
+	//	//è®¡ç®—åŒ…å«äºåœ†åœˆå†…æœ‰åƒç´ ç‚¹
 	//	int i,j,ii,jj;
 	//	for(i = point.x()-nCursorR; i <= point.x()+nCursorR; i += nGridSize)
 	//	{
@@ -706,8 +706,8 @@ void QDrawArea::calcGrid(QPoint p1,QPoint p2)
 	//			{
 	//				continue;
 	//			}
-	//			ii = (j-nGridY0) / nGridSize;			//ĞĞÊı
-	//			jj = (i-nGridX0) / nGridSize;			//ÁĞÊı
+	//			ii = (j-nGridY0) / nGridSize;			//è¡Œæ•°
+	//			jj = (i-nGridX0) / nGridSize;			//åˆ—æ•°
 	//			if(qPointCursor == Brush)
 	//			{
 	//				*(pbGridAllPoint + ii * nGridW + jj) = true;
@@ -752,14 +752,14 @@ void QDrawArea::rotateLeftGrid()
 	bool *rp = new bool[gw*gh];				//Rotated point.
 
 	//rotate data
-	ii = gh - 1;								//Ğı×ªºóGridµÄĞĞ
-	jj = 0;									//Ğı×ªºóGridµÄÁĞ
-	for(i = 0; i < nGridH; i ++)		//°´Ğı×ªÇ°µÄGrid±éÀú
+	ii = gh - 1;								//æ—‹è½¬åGridçš„è¡Œ
+	jj = 0;									//æ—‹è½¬åGridçš„åˆ—
+	for(i = 0; i < nGridH; i ++)		//æŒ‰æ—‹è½¬å‰çš„Gridéå†
 	{
 		for(j = 0; j < nGridW; j ++)
 		{
 			*(rp + ii*gw + jj) = *(pbGridAllPoint + i*nGridW + j);
-			ii --;							//rpµÄÁĞ±éÀú
+			ii --;							//rpçš„åˆ—éå†
 		}
 		jj ++;
 		ii = gh - 1;
@@ -781,14 +781,14 @@ void QDrawArea::rotateRightGrid()
 	bool *rp = new bool[gw*gh];				//Rotated point.
 
 	//rotate data
-	ii = 0;									//Ğı×ªºóGridµÄĞĞ
-	jj = gw - 1;								//Ğı×ªºóGridµÄÁĞ
-	for(i = 0; i < nGridH; i ++)		//°´Ğı×ªÇ°µÄGrid±éÀú
+	ii = 0;									//æ—‹è½¬åGridçš„è¡Œ
+	jj = gw - 1;								//æ—‹è½¬åGridçš„åˆ—
+	for(i = 0; i < nGridH; i ++)		//æŒ‰æ—‹è½¬å‰çš„Gridéå†
 	{
 		for(j = 0; j < nGridW; j ++)
 		{
 			*(rp + ii*gw + jj) = *(pbGridAllPoint + i*nGridW + j);
-			ii ++;							//rpµÄÁĞ±éÀú
+			ii ++;							//rpçš„åˆ—éå†
 		}
 		jj --;
 		ii = 0;
@@ -807,7 +807,7 @@ void QDrawArea::flipHorizontalGrid()
 	bool *fp = new bool[nGridH*nGridW];	//Fliped point.
 
 	//Flip data
-	for(i = 0; i < nGridH; i ++)		//°´·­×ªÇ°µÄGrid±éÀú
+	for(i = 0; i < nGridH; i ++)		//æŒ‰ç¿»è½¬å‰çš„Gridéå†
 	{
 		for(j = 0; j < nGridW; j ++)
 		{
@@ -828,7 +828,7 @@ void QDrawArea::flipVerticalGrid()
 
 	//Flip data
 	k = nGridH - 1;
-	for(i = 0; i < nGridH; i ++)		//°´·­×ªÇ°µÄGrid±éÀú
+	for(i = 0; i < nGridH; i ++)		//æŒ‰ç¿»è½¬å‰çš„Gridéå†
 	{
 		for(j = 0; j < nGridW; j ++)
 		{
@@ -877,8 +877,8 @@ void QDrawArea::mousePressEvent(QMouseEvent *e)
 				&& px < nGridX0 + nGridW*nGridSize
 				&& py < nGridY0 + nGridH*nGridSize)
 			{
-				int i = (py - nGridY0) / nGridSize;		//ĞĞÊı
-				int j = (px - nGridX0) / nGridSize;		//ÁĞÊı
+				int i = (py - nGridY0) / nGridSize;		//è¡Œæ•°
+				int j = (px - nGridX0) / nGridSize;		//åˆ—æ•°
 				*(pbGridAllPoint + i * nGridW + j) = !(*(pbGridAllPoint + i * nGridW + j));
 			}
 			drawGrid();
@@ -893,8 +893,8 @@ void QDrawArea::mousePressEvent(QMouseEvent *e)
 			else
 			{
 				//if((thisPoint-pdragPos).manhattanLength() > QApplication::startDragDistance())
-				//ÕâÀï¼Ù¶¨ÔÚÎÄ±¾¿òÍâµ¥»÷Ê±£¬¾ÍÈÏÒªÖ´ĞĞ drag and drop operation£¬
-				//ËùÒÔ²»·ÅÔÚ mouseMoveEvent ÅĞ¶¨ startDragDistance()¡£
+				//è¿™é‡Œå‡å®šåœ¨æ–‡æœ¬æ¡†å¤–å•å‡»æ—¶ï¼Œå°±è®¤è¦æ‰§è¡Œ drag and drop operationï¼Œ
+				//æ‰€ä»¥ä¸æ”¾åœ¨ mouseMoveEvent åˆ¤å®š startDragDistance()ã€‚
 
 				//it is drag event, and start the drag evet.
 				//the evnet order: start drag evet -> dragEnterEvent - > dragMoveEvnet -> dragLeaveEvent or dropEvent.

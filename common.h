@@ -14,8 +14,8 @@
 /* data */
 typedef unsigned char byte;
 
-//Ö§³ÖµÄÎÄ¼ş¸ñÊ½
-#define FILE_FALSE		0x00			//²»Ö§³Ö
+//æ”¯æŒçš„æ–‡ä»¶æ ¼å¼
+#define FILE_FALSE		0x00			//ä¸æ”¯æŒ
 #define FILE_GAQ		0x01
 #define FILE_PIC		0x02
 #define FILE_TXT		0x03
@@ -31,7 +31,7 @@ struct GAQFILE
 };
 #pragma pack()
 /*
-GAQÎÄ¼ş¸ñÊ½£º
+GAQæ–‡ä»¶æ ¼å¼ï¼š
 ImageData: ImageSize bytes
 FileHead: 4 bytes						[File size, not include itself or FileEnd]
 GridWidth: 4 bytes
@@ -42,10 +42,10 @@ ImageSize: 4 bytes						[The image size data]
 */
 
 
-//¹â±ê
+//å…‰æ ‡
 enum QPointCursor{Arrow,Point,Brush,Erase,Text};
 
-//Í¼Ïñ×ª¸ñ×Óµã·½·¨
+//å›¾åƒè½¬æ ¼å­ç‚¹æ–¹æ³•
 //#define IMG2GRID_TEXT		0x00		//convert text to picture and then to grid.
 #define IMG2GRID_Gray		0x01
 #define IMG2GRID_Red		0x02

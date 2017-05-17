@@ -2,7 +2,6 @@
 #define GRIDARRAYQT_H
 
 #include <QtWidgets/QMainWindow>
-#include "ui_GridArrayQt.h"
 
 #include <QPainter>
 #include <QImage>
@@ -19,6 +18,7 @@
 #include <QTextStream>
 #include <QAction>
 #include <QLabel>
+#include <QComboBox>
 #include <QIcon>
 #include <QMenuBar>
 #include <QToolBar>
@@ -33,6 +33,9 @@
 #include "common.h"
 #include "QDrawArea.h"
 
+namespace Ui {
+class GridArrayQt;
+}
 
 //class GCombox
 class GCombox : public QComboBox
@@ -74,7 +77,7 @@ public:
 
 	void createFont();
 
-	// жидиЪТМў
+    // Event
 	void closeEvent(QCloseEvent *);
 	void keyPressEvent(QKeyEvent *);
 	void keyReleaseEvent(QKeyEvent *);
@@ -144,8 +147,7 @@ private:
 	QLabel *statusMsg1;
 	QLabel *statusMsg2;                              
 
-	Ui::GridArrayQtClass *ui;
-	Ui::GridArrayQtClass _ui;
+    Ui::GridArrayQt *ui;
 };
 
 #endif // GRIDARRAYQT_H

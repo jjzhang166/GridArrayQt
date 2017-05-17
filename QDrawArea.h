@@ -58,7 +58,7 @@ public:
 	void setImg2Grid(byte type,int value);
 
 	void setInit();
-	void exportArray();									//输出数组
+	void exportArray();									//杈撳嚭鏁扮粍
 	void loadArray(QFile*);								//load grid point data from byte array.
 
 	void loadPicture(const QString&, byte, int);
@@ -77,10 +77,10 @@ public:
 	void zoomOutGrid();									//Zoom out.
 	void rotateLeftGrid();								//Rotate left(anti-clockwise).
 	void rotateRightGrid();								//Rotate right(clockwise).
-	void flipHorizontalGrid();							//水平翻转
-	void flipVerticalGrid();							//垂直翻转
+	void flipHorizontalGrid();							//姘村钩缈昏浆
+	void flipVerticalGrid();							//鍨傜洿缈昏浆
 
-	// 重载事件
+	// 閲嶈浇浜嬩欢
 	void paintEvent(QPaintEvent *);
 	void wheelEvent(QWheelEvent *);                     //set the GridSize with wheel
 	void mousePressEvent(QMouseEvent *);                //Get the point of mouse

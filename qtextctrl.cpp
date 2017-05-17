@@ -43,9 +43,9 @@ void QTextCtrl::setTextEdit()
 	/*
 	//qTextEdit->setTextColor(Qt::blue);
 	QPalette palette; 									//set the color can use: setPalette, setStyle or setStyleSheet.
-	palette.setColor(QPalette::Base,Qt::transparent);	//QPalette::Base,Ö¸ÎÄ±¾ÊäÈë´°¿Ú²¿¼ş(±ÈÈçQTextEditµÈ)µÄ±³¾°É«
-	palette.setColor(QPalette::Text,Qt::blue);			//QPalette::Text,ÎÄ±¾ÊäÈë´°¿Ú²¿¼şµÄÇ°¾°É«
-	palette.setColor(QPalette::WindowText,Qt::blue);	//QPalette::WindowText,ÎÄ×ÖÇ°¾°ÑÕÉ«
+	palette.setColor(QPalette::Base,Qt::transparent);	//QPalette::Base,æŒ‡æ–‡æœ¬è¾“å…¥çª—å£éƒ¨ä»¶(æ¯”å¦‚QTextEditç­‰)çš„èƒŒæ™¯è‰²
+	palette.setColor(QPalette::Text,Qt::blue);			//QPalette::Text,æ–‡æœ¬è¾“å…¥çª—å£éƒ¨ä»¶çš„å‰æ™¯è‰²
+	palette.setColor(QPalette::WindowText,Qt::blue);	//QPalette::WindowText,æ–‡å­—å‰æ™¯é¢œè‰²
 	qTextEdit->setPalette(palette);
 	*/
 
@@ -98,7 +98,7 @@ void QTextCtrl::setFont(QFont font)
 
 //bool QTextCtrl::eventFilter(QObject *obj, QEvent *e)
 //{
-//	//if you want to filter the event out, return true. (filter out:ÂËµô)
+//	//if you want to filter the event out, return true. (filter out:æ»¤æ‰)
 //	
 //	if(obj == qTextEdit)
 //	{
@@ -160,7 +160,7 @@ void QTextCtrl::mousePressEvent(QMouseEvent *e)
 		this->setFocus();
 
 		//remember the left top point of this's geometry.
-		//ÕâÀï¼Ç×¡µÄÊÇ¶¨µã£¬¼´ÍÏ×§µãµÄÏà·´Î»ÖÃµã
+		//è¿™é‡Œè®°ä½çš„æ˜¯å®šç‚¹ï¼Œå³æ‹–æ‹½ç‚¹çš„ç›¸åä½ç½®ç‚¹
 		switch (dpos)
 		{
 		case QTextCtrl::dpLeftTop:

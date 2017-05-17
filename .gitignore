@@ -5,24 +5,19 @@
 /*
 !/.gitignore
 !/LICENSE
-!/README.md
-!/test.png
-!/GridArrayQt.sln
+!/*.md
+!/*.png
 
-!/GridArrayQt
-/GridArrayQt/*
-!/GridArrayQt/Data/
-!/GridArrayQt/images/
+!/Data/
+!/images/
 
-!/GridArrayQt/*.h
-!/GridArrayQt/*.cpp
-!/GridArrayQt/*.pro
-!/GridArrayQt/*.pri
-!/GridArrayQt/*.qrc
-!/GridArrayQt/*.ui
-!/GridArrayQt/*.qm
-!/GridArrayQt/*.ts
-!/GridArrayQt/*.ini
-!/GridArrayQt/*.vcxproj
-!/GridArrayQt/*.vcxproj.filters
+!/*.h
+!/*.cpp
+!/*.pro
+!/*.qrc
+!/*.ui
+!/*.qm
+!/*.ts
+!/*.ini
+
 
