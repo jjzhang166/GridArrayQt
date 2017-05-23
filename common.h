@@ -6,7 +6,6 @@
 #define	_GRIDARRAY_QT_VERSION_ "Create picture array for OLED screen.\n\nVersion 1.2.1"
 
 
-
 /* include */
 #include <QDebug>
 #include <qmath.h>
@@ -23,11 +22,11 @@ typedef unsigned char byte;
 #pragma  pack(1)
 struct GAQFILE
 {
-	byte *image;
-	int gw;
-	int gh;
-	bool *gp;
-	int imageSize;
+    byte    *image;
+    int     gw;
+    int     gh;
+    bool    *gp;
+    int     imageSize;
 };
 #pragma pack()
 /*

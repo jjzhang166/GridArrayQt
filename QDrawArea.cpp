@@ -909,12 +909,11 @@ void QDrawArea::mousePressEvent(QMouseEvent *e)
 				QPixmap pixmap(qEdit->size());
 				pixmap.fill(QColor(0,0,0,0));
 				qEdit->render(&pixmap);
-				drag->setPixmap(pixmap);			//when dragMove, it shows pixmap.
+                drag->setPixmap(pixmap);		//when dragMove, it shows pixmap.
 				drag->setHotSpot(thisPoint-qEdit->pos());
 
 				drag->exec(Qt::MoveAction);		//starting drag and drop operation only can be in Qt::MoveAction.
 				delete drag;
-				delete mimeData;
 
 				bMouseDrawing = false;			//when it is drag and drop operation, the mouse is to be not moving.
 			}

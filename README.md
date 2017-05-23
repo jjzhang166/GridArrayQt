@@ -6,13 +6,16 @@
  * author : yehuohan
 
 ---
-#Todo
+# Todo
  * 实现文体框自动吸付格子
  * 实现append(<< >> ==)array.txt
  * 实现另存为功能
 
 ---
-#Log
+# ChangeLog
+## 20170523 - v1.3.1
+ * 修复移动文本框崩溃的bug
+ 
 ## 20170517 - v1.3.0
  * 改成使用qtcreator工程，去除vs+qt模式
 
