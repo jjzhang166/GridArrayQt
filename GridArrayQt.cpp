@@ -379,13 +379,13 @@ void GridArrayQt::setupDockwidget()
 	gcombox_FontSize->setCurrentText(QString("%1").arg(nFontSize));
 
 	QString btnStr = "QPushButton{\
-						border-radius: 5px;\
+                        border-radius: 5px;\
 						border: 2px outset gray;}\
 					 QPushButton:pressed{\
-						background-color: rgba(90,230,230,120);\
-						border-style: inset;}\
-					 QPushButton:checked{\
-						background-color: rgba(90,230,230,120);\
+                        background-color: rgba(90,180,180,120);\
+                        border-style: inset;}\
+                     QPushButton:checked{\
+                        background-color: rgba(90,230,230,120);\
 						border-style: inset;}";
 	ui->btn_Accept->setIcon(QIcon(":/icon/images/font/ok.png"));
 	ui->btn_Accept->setIconSize(QSize(22,22));
@@ -393,8 +393,8 @@ void GridArrayQt::setupDockwidget()
 	ui->btn_Accept->setStyleSheet(btnStr);
 	ui->btn_Bold->setCheckable(true);
 	ui->btn_Bold->setChecked(bFontBold);
-	ui->btn_Bold->setIcon(QIcon(":/icon/images/font/bold.png"));
-	ui->btn_Bold->setIconSize(QSize(22,22));
+    ui->btn_Bold->setIcon(QIcon(":/icon/images/font/bold.png"));
+    ui->btn_Bold->setIconSize(QSize(22,22));
 	ui->btn_Bold->setFixedSize(30,30);
 	ui->btn_Bold->setStyleSheet(btnStr);
 	ui->btn_Italic->setCheckable(true);
@@ -414,8 +414,8 @@ void GridArrayQt::setupDockwidget()
 		[=]{sFontName = ui->fontComboBox->currentText();createFont();});
 	connect(gcombox_FontSize,&GCombox::currentTextChanged,
 		[=]{nFontSize = gcombox_FontSize->currentText().toInt();createFont();});
-	connect(ui->btn_Bold,&QPushButton::toggled,
-		[=]{bFontBold = ui->btn_Bold->isChecked();createFont();});
+    connect(ui->btn_Bold,&QPushButton::toggled,
+        [=]{bFontBold = ui->btn_Bold->isChecked();createFont();});
 	connect(ui->btn_Italic,&QPushButton::toggled,
 		[=]{bFontItalic = ui->btn_Italic->isChecked();createFont();});
 	connect(ui->btn_Underline,&QPushButton::toggled,
